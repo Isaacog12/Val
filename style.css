@@ -1,0 +1,442 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Valentine's Color Palette */
+    --deep-red: #8B0000;
+    --crimson: #DC143C;
+    --soft-pink: #FFB6C1;
+    --light-pink: #FFC0CB;
+    --rose-gold: #B76E79;
+    --cream: #FFF5EE;
+    --dark-burgundy: #4A0E0E;
+    --gold: #D4AF37;
+
+    /* Gradients */
+    --gradient-romantic: linear-gradient(135deg, var(--deep-red) 0%, var(--crimson) 50%, var(--rose-gold) 100%);
+    --gradient-soft: linear-gradient(135deg, var(--soft-pink) 0%, var(--light-pink) 100%);
+    --gradient-overlay: linear-gradient(to bottom, rgba(139, 0, 0, 0.1), rgba(220, 20, 60, 0.2));
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to bottom, var(--cream), #FFE4E1);
+    color: var(--dark-burgundy);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Hearts Animation Background */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0;
+    animation: floatHeart 15s infinite ease-in-out;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-romantic);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    will-change: transform;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,101.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+    background-size: cover;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    z-index: 3;
+    position: relative;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 2rem;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.heart-divider {
+    font-size: 3rem;
+    animation: heartbeat 1.5s infinite;
+    will-change: transform;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Fade In Animations */
+.fade-in {
+    animation: fadeIn 1.5s ease-out;
+}
+
+.fade-in-delay {
+    animation: fadeIn 1.5s ease-out 0.5s backwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Photo Sections */
+.photo-section {
+    margin-bottom: 8rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.photo-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.photo-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(139, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(139, 0, 0, 0.25);
+}
+
+.photo-card.reverse {
+    grid-template-columns: 1fr 1fr;
+}
+
+.photo-card.reverse .image-wrapper {
+    order: 2;
+}
+
+.photo-card.reverse .message-card {
+    order: 1;
+}
+
+.image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.image-wrapper:hover .photo {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-overlay);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-wrapper:hover .image-overlay {
+    opacity: 1;
+}
+
+.message-card {
+    padding: 1rem;
+}
+
+.message-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--deep-red);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.message-content p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.8;
+    color: var(--dark-burgundy);
+    margin-bottom: 1.5rem;
+}
+
+.signature {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--rose-gold);
+    text-align: right;
+    margin-top: 2rem;
+}
+
+/* Final Section */
+.final-section {
+    margin: 8rem 0;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.final-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.final-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 228, 225, 0.9));
+    backdrop-filter: blur(20px);
+    border-radius: 40px;
+    padding: 5rem 4rem;
+    box-shadow: 0 30px 80px rgba(139, 0, 0, 0.2);
+    border: 2px solid var(--rose-gold);
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.rose-decoration {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.final-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--deep-red);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.final-message {
+    position: relative;
+    z-index: 1;
+}
+
+.final-message p {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    line-height: 2;
+    color: var(--dark-burgundy);
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+.final-words {
+    font-weight: 500;
+    font-size: clamp(1.2rem, 2.5vw, 1.4rem) !important;
+    color: var(--crimson);
+    text-align: center !important;
+    margin-top: 3rem !important;
+}
+
+.final-signature {
+    text-align: center;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.final-signature p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--dark-burgundy);
+    margin-bottom: 0.5rem;
+}
+
+.final-signature .name {
+    font-size: 3rem;
+    font-weight: 600;
+    background: var(--gradient-romantic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.heart-symbol {
+    font-size: 3rem;
+    animation: heartbeat 1.5s infinite;
+}
+
+.date {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--rose-gold);
+    margin-top: 2rem;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--gradient-romantic);
+    color: white;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+
+    .photo-card,
+    .photo-card.reverse {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .photo-card.reverse .image-wrapper,
+    .photo-card.reverse .message-card {
+        order: unset;
+    }
+
+    .final-card {
+        padding: 3rem 2rem;
+    }
+
+    .container {
+        padding: 2rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .photo-card {
+        padding: 1.5rem;
+    }
+
+    .final-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .message-content h2 {
+        font-size: 1.8rem;
+    }
+}
