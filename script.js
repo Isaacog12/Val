@@ -73,8 +73,25 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Auto-play background music
+function initBackgroundMusic() {
+    const audio = document.getElementById('backgroundMusic');
+    if (audio) {
+        audio.volume = 0.4; // Set to 40% volume
+        // Try to play automatically
+        audio.play().catch(err => {
+            // If autoplay is blocked, play on first user interaction
+            console.log('Autoplay blocked, will play on first interaction');
+            document.body.addEventListener('click', () => {
+                audio.play();
+            }, { once: true });
+        });
+    }
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     createFloatingHearts();
     revealOnScroll();
+    initBackgroundMusic();
 });

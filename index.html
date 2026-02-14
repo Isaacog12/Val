@@ -16,10 +16,10 @@
 <body>
     <div class="hearts-container" id="heartsContainer"></div>
 
-    <!-- Music Toggle Button -->
-    <button class="music-toggle" id="musicToggle" aria-label="Toggle music">
-        <span class="music-icon">🎵</span>
-    </button>
+    <!-- Hidden Audio Player for Background Music -->
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="images/Perfect.mp3" type="audio/mpeg">
+    </audio>
 
     <header class="hero">
         <div class="hero-content">
@@ -34,13 +34,16 @@
     <main class="container">
         <!-- Photo Section 1 -->
         <section class="photo-section reveal">
+            <div class="section-number">01</div>
             <div class="photo-card">
                 <div class="image-wrapper">
                     <img src="images/favour1.png" alt="My Beautiful Favour" class="photo">
                     <div class="image-overlay"></div>
+                    <div class="image-frame"></div>
                 </div>
                 <div class="message-card">
                     <div class="message-content">
+                        <div class="quote-mark">"</div>
                         <h2>Your Beauty Takes My Breath Away</h2>
                         <p>Every time I look at you, I'm reminded of how blessed I am. Your smile lights up my darkest
                             days, and your eyes hold galaxies I could get lost in forever. You are the most beautiful
@@ -53,13 +56,16 @@
 
         <!-- Photo Section 2 -->
         <section class="photo-section reveal">
+            <div class="section-number">02</div>
             <div class="photo-card reverse">
                 <div class="image-wrapper">
                     <img src="images/favour2.png" alt="My Heart" class="photo">
                     <div class="image-overlay"></div>
+                    <div class="image-frame"></div>
                 </div>
                 <div class="message-card">
                     <div class="message-content">
+                        <div class="quote-mark">"</div>
                         <h2>You Make Me Feel Complete</h2>
                         <p>Before you, I didn't know what it meant to truly love someone. You've shown me that love
                             isn't just a feeling—it's a choice I make every single day to cherish you, support you, and
@@ -72,13 +78,16 @@
 
         <!-- Photo Section 3 -->
         <section class="photo-section reveal">
+            <div class="section-number">03</div>
             <div class="photo-card">
                 <div class="image-wrapper">
                     <img src="images/favour3.png" alt="My Forever" class="photo">
                     <div class="image-overlay"></div>
+                    <div class="image-frame"></div>
                 </div>
                 <div class="message-card">
                     <div class="message-content">
+                        <div class="quote-mark">"</div>
                         <h2>Our Future Shines Bright</h2>
                         <p>When I think about tomorrow, all I see is you and me—building dreams together, creating
                             memories, and writing our own love story. I promise to be your partner, your best friend,
