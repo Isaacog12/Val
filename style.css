@@ -372,6 +372,129 @@ body {
     z-index: 1;
 }
 
+/* 365 Reasons Section */
+.reasons-section {
+    margin: 8rem 0;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.reasons-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reasons-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 228, 225, 0.95));
+    backdrop-filter: blur(20px);
+    border-radius: 40px;
+    padding: 4rem 3rem;
+    box-shadow: 0 30px 80px rgba(139, 0, 0, 0.2);
+    border: 3px solid var(--rose-gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.reasons-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.reasons-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: var(--deep-red);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.reasons-subtitle {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--rose-gold);
+    font-style: italic;
+}
+
+.reason-display {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 25px;
+    padding: 3rem 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.1);
+    border: 2px solid rgba(183, 110, 121, 0.3);
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.reason-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--crimson);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.reason-number {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    color: var(--rose-gold);
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.reason-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--dark-burgundy);
+    line-height: 1.6;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.reason-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.reason-btn {
+    background: var(--gradient-romantic);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(139, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.reason-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
+}
+
+.reason-btn:active {
+    transform: translateY(-1px);
+}
+
+.reason-btn.random-btn {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+}
+
+.reason-btn span {
+    font-size: 1.2rem;
+}
+
 /* Footer */
 .footer {
     text-align: center;
@@ -422,6 +545,24 @@ body {
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 2.5rem;
+    }
+
+    .quote-mark {
+        font-size: 4rem;
+    }
+
+    .reasons-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .reason-display {
+        padding: 2rem 1.5rem;
+        min-height: 200px;
+    }
+
+    .reason-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
     }
 
     .subtitle {
